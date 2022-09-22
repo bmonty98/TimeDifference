@@ -23,8 +23,13 @@ second time, assume the second time is the next day (i.e., add 24 hours to the s
         System.out.println("Please enter a second time: ");
         Scanner scanTime2 = new Scanner(System.in);
         String input2 = scanTime2.nextLine();
-
+        
         try{
+            if(input1.length() > 4 || input2.length() > 4){
+                scanTime1.close();
+                scanTime2.close();
+                throw new IllegalArgumentException();
+            }
             int timeOneHours = Integer.parseInt(input1.substring(0,2));
             if(timeOneHours < 0 || timeOneHours > 23){
                 scanTime1.close();
